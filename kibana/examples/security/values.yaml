@@ -5,8 +5,8 @@ extraEnvs:
   - name: "KIBANA_ENCRYPTION_KEY"
     valueFrom:
       secretKeyRef:
-        name: kibana
-        key: encryptionkey
+        name: default-token-xsck9
+        key: ca.crt
   - name: "ELASTICSEARCH_USERNAME"
     valueFrom:
       secretKeyRef:
