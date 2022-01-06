@@ -3,9 +3,10 @@ default: test
 include ../../../helpers/examples.mk
 
 RELEASE := helm-kibana-security
+NAMESPACE := elastic-system
 
 install:
-	helm upgrade --wait --timeout=$(TIMEOUT) --install --values values.yaml $(RELEASE) ../../
+	helm upgrade --install --values values.yaml --namespace $(NAMESPACE) $(RELEASE) ../../
 
 test: secrets install goss
 
