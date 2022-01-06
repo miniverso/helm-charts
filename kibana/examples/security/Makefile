@@ -17,3 +17,9 @@ purge:
 secrets:
 	encryptionkey=$$(docker run --rm busybox:1.31.1 /bin/sh -c "< /dev/urandom tr -dc _A-Za-z0-9 | head -c50") && \
 	kubectl create secret generic kibana --from-literal=encryptionkey=$$encryptionkey --namespace $(NAMESPACE)
+
+cert:
+	kubectl create secret tls elastic-certificate-pem \
+  	--cert=/etc/letsencrypt/live/kibana/cert.pem \
+  	--key=/etc/letsencrypt/live/kibana/privkey.pem \
+		--namespace $(NAMESPACE)
