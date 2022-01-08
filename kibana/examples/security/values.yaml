@@ -22,16 +22,16 @@ kibanaConfig:
   kibana.yml: |
     server.ssl:
       enabled: true
-      key: /usr/share/kibana/config/certs/elastic-certificate.pem
-      certificate: /usr/share/kibana/config/certs/elastic-certificate.pem
+      key: /usr/share/kibana/config/certs/privkey.pem
+      certificate: /usr/share/kibana/config/certs/cert.pem
     xpack.security.encryptionKey: ${KIBANA_ENCRYPTION_KEY}
     elasticsearch.ssl:
-      certificateAuthorities: /usr/share/kibana/config/certs/elastic-certificate.pem
+      certificateAuthorities: /usr/share/kibana/config/certs/chain.pem
       verificationMode: certificate
 
 protocol: https
 
 secretMounts:
   - name: elastic-certificate-pem
-    secretName: elastic-certificate-pem
+    secretName: kibana-cert
     path: /usr/share/kibana/config/certs
