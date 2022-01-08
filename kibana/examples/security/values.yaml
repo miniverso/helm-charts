@@ -1,5 +1,5 @@
 ---
-elasticsearchHosts: "https://security-master:9200"
+elasticsearchHosts: "https://elasticsearch-master.elastic-system:9200"
 
 extraEnvs:
   - name: "KIBANA_ENCRYPTION_KEY"
@@ -25,6 +25,7 @@ kibanaConfig:
       key: /usr/share/kibana/config/certs/privkey.pem
       certificate: /usr/share/kibana/config/certs/cert.pem
     xpack.security.encryptionKey: ${KIBANA_ENCRYPTION_KEY}
+    xpack.encryptedSavedObjects.encryptionKey: ${KIBANA_ENCRYPTION_KEY}
     elasticsearch.ssl:
       certificateAuthorities: /usr/share/kibana/config/certs/chain.pem
       verificationMode: certificate
